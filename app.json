@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "VentaVeloz",
+    "slug": "ventaveloz",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#2563eb"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "VentaVeloz necesita acceso a tu cámara para tomar fotos de productos",
+        "NSPhotoLibraryUsageDescription": "VentaVeloz necesita acceso a tu galería para seleccionar fotos de productos"
+      }
+    },
+    "android": {
+      "package": "com.ventaveloz.app",
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "VentaVeloz necesita acceso a tu galería para seleccionar fotos de productos",
+          "cameraPermission": "VentaVeloz necesita acceso a tu cámara para tomar fotos de productos"
+        }
+      ]
+    ]
+  }
+}
