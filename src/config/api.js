@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Configura la URL base según tu entorno
 // IMPORTANTE: Para dispositivos móviles físicos, usa tu IP local
-const API_URL = 'http://192.168.1.74:4000/api';
+const API_URL = 'https://ventaveloz-backend.onrender.com/api';
 
 // CONFIGURACIONES ALTERNATIVAS:
 // Para Android Emulator, usa: http://10.0.2.2:4000/api
