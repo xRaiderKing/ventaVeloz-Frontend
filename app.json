@@ -4,8 +4,11 @@
     "slug": "ventaveloz",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./assets/iconoaplicacionmovile.png",
     "userInterfaceStyle": "light",
     "splash": {
+      "image": "./assets/iconoaplicacionmovile.png",
+      "resizeMode": "contain",
       "backgroundColor": "#2563eb"
     },
     "ios": {
@@ -17,12 +20,17 @@
     },
     "android": {
       "package": "com.ventaveloz.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/iconoaplicacionmovile.png",
+        "backgroundColor": "#2563eb"
+      },
       "permissions": [
         "android.permission.CAMERA",
         "android.permission.READ_EXTERNAL_STORAGE",
         "android.permission.WRITE_EXTERNAL_STORAGE",
         "android.permission.RECORD_AUDIO"
-      ]
+      ],
+      "softwareKeyboardLayoutMode": "pan"
     },
     "plugins": [
       [

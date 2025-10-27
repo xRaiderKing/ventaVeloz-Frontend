@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   Alert,
+  SafeAreaView,
 } from 'react-native';
 import { useAuth } from '../context/AuthContext';
 import { obtenerPerfil } from '../services/usuarioService';
@@ -51,7 +52,8 @@ const ProfileScreen = () => {
   }
 
   return (
-    <ScrollView style={styles.container}>
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView style={styles.container}>
       <View style={styles.header}>
         <View style={styles.avatarContainer}>
           <Text style={styles.avatarText}>
@@ -135,10 +137,15 @@ const ProfileScreen = () => {
         </Text>
       </View>
     </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#2563eb',
+  },
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
@@ -151,7 +158,7 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#2563eb',
-    paddingTop: 60,
+    paddingTop: 20,
     paddingBottom: 30,
     alignItems: 'center',
   },

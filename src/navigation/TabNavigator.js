@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, Platform } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAuth } from '../context/AuthContext';
 
 // Screens
@@ -16,6 +17,7 @@ const Tab = createBottomTabNavigator();
 const TabNavigator = () => {
   const { user } = useAuth();
   const isAdmin = user?.rol === 'admin';
+  const insets = useSafeAreaInsets();
 
   return (
     <Tab.Navigator
@@ -27,8 +29,8 @@ const TabNavigator = () => {
           borderTopColor: '#e5e7eb',
           borderTopWidth: 1,
           paddingTop: 8,
-          paddingBottom: 8,
-          height: 60,
+          paddingBottom: Platform.OS === 'android' ? insets.bottom + 8 : 8,
+          height: Platform.OS === 'android' ? 60 + insets.bottom : 60,
         },
         tabBarLabelStyle: {
           fontSize: 12,
