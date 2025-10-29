@@ -107,7 +107,13 @@ export const eliminarImagenProducto = async (id) => {
 // Obtener URL completa de imagen
 export const obtenerUrlImagen = (imagePath) => {
   if (!imagePath) return null;
-  // Extraer la URL base de la configuración de api
+  
+  // Si la imagen ya es una URL completa (Cloudinary), retornarla directamente
+  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+    return imagePath;
+  }
+  
+  // Si es una ruta local antigua, construir URL con el backend
   const baseURL = api.defaults.baseURL.replace('/api', '');
   return `${baseURL}/${imagePath}`;
 };
