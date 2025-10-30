@@ -108,12 +108,33 @@ export const eliminarImagenProducto = async (id) => {
 export const obtenerUrlImagen = (imagePath) => {
   if (!imagePath) return null;
   
-  // Si la imagen ya es una URL completa (Cloudinary), retornarla directamente
-  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
-    return imagePath;
+  // Limpiar espacios en blanco
+  const cleanPath = imagePath.trim();
+  
+  // Debug: Log para ver qué está recibiendo
+  console.log('obtenerUrlImagen recibió:', cleanPath);
+  
+  // Si la imagen ya es una URL completa (Cloudinary o cualquier servicio externo)
+  if (cleanPath.startsWith('http://') || cleanPath.startsWith('https://')) {
+    console.log('Es URL completa, retornando directamente:', cleanPath);
+    return cleanPath;
+  }
+  
+  // Si contiene cloudinary en alguna parte, es una URL completa mal formateada
+  if (cleanPath.includes('cloudinary.com')) {
+    console.log('Contiene cloudinary pero no empieza con http/https');
+    // Intentar extraer la URL completa
+    const match = cleanPath.match(/(https?:\/\/[^\s]+)/);
+    if (match) {
+      console.log('Extraída URL:', match[1]);
+      return match[1];
+    }
+    return cleanPath;
   }
   
   // Si es una ruta local antigua, construir URL con el backend
   const baseURL = api.defaults.baseURL.replace('/api', '');
-  return `${baseURL}/${imagePath}`;
+  const fullUrl = `${baseURL}/${cleanPath}`;
+  console.log('Construyendo URL local:', fullUrl);
+  return fullUrl;
 };
